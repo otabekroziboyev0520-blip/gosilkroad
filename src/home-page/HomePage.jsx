@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import cities from "./cities";
-import { BEST_FOR, TESTIMONIALS, WHY_UZ } from "./homeData";
+import { TESTIMONIALS, WHY_UZ } from "./homeData";
 import { GLOBAL_CSS } from "../shared/styles";
 import CityMap from "./map/CityMap";
 import ImageGallery, { WikiThumb } from "./cities/ImageGallery";
@@ -421,91 +421,6 @@ export default function HomePage({ onOpenPlan }) {
                   fontSize: 15,
                   color: "#6B5E45",
                   lineHeight: 1.75,
-                }}
-              >
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* BEST FOR */}
-      <section style={{ padding: "0 32px 80px", maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <div
-            style={{
-              fontFamily: "'Cinzel',serif",
-              fontSize: 10,
-              color: "#C9A84C",
-              letterSpacing: "0.3em",
-              marginBottom: 12,
-            }}
-          >
-            FIND YOUR MATCH
-          </div>
-          <h2
-            style={{
-              fontFamily: "'Cinzel',serif",
-              fontSize: "clamp(20px,4vw,38px)",
-              fontWeight: 600,
-              color: "#EDE4D0",
-            }}
-          >
-            Best For…
-          </h2>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))",
-            gap: 14,
-          }}
-        >
-          {BEST_FOR.map((item, i) => (
-            <div
-              key={i}
-              className="hc"
-              onClick={() => onOpenPlan()}
-              style={{
-                padding: 22,
-                background: "#111009",
-                border: `1px solid ${item.color}22`,
-                borderRadius: 12,
-                cursor: "pointer",
-                position: "relative",
-                overflow: "hidden",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: 2,
-                  background: `linear-gradient(90deg,${item.color},${item.color}44)`,
-                }}
-              />
-              <div style={{ fontSize: 30, marginBottom: 12 }}>{item.icon}</div>
-              <div
-                style={{
-                  fontFamily: "'Cinzel',serif",
-                  fontSize: 13,
-                  color: "#EDE4D0",
-                  marginBottom: 8,
-                  fontWeight: 600,
-                }}
-              >
-                {item.label}
-              </div>
-              <p
-                style={{
-                  fontFamily: "'Crimson Pro',serif",
-                  fontSize: 13,
-                  color: "#5A4E3A",
-                  lineHeight: 1.65,
                 }}
               >
                 {item.desc}
