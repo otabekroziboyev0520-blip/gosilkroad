@@ -1152,7 +1152,7 @@ export default function HomePage({ onOpenPlan }) {
               </p>
               <div style={{ display: "flex", gap: 12 }}>
                 <a
-                  href="mailto:hello@silkroute.uz"
+                  href="mailto:otabek.roziboyev11@gmail.com"
                   style={{
                     fontFamily: "'Cinzel',serif",
                     fontSize: 10,
