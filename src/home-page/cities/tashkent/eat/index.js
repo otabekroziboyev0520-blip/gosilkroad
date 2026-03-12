@@ -1,0 +1,8 @@
+const eat = [
+{id:"tr1",name:"Pro.Khinkali",type:"restaurant",icon:"🥟",lat:41.3012,lng:69.2845,rating:4.8,reviews:1243,markerColor:"#E65100",wiki:"Uzbek_cuisine",desc:"The best Georgian restaurant in Tashkent — huge khinkali dumplings, beautiful modern interior, and consistently excellent quality. A local favorite.",tip:"Always busy — arrive early or book. The khinkali with cheese are outstanding.",hours:"12pm–11pm daily",fee:"$$"},
+      {id:"tr2",name:"CZN Burak Tashkent",type:"restaurant",icon:"⭐",lat:41.2980,lng:69.2402,rating:4.8,reviews:1876,markerColor:"#E65100",wiki:"Uzbek_cuisine",desc:"The famous Turkish chef's Tashkent outpost — theatrical plating, great atmosphere and unexpectedly good value for the experience.",tip:"Reserve in advance — it's always fully booked. Watch for the chef's table event.",hours:"12pm–12am daily",fee:"$$$"},
+      {id:"tr3",name:"Besh Qozon",type:"restaurant",icon:"🍲",lat:41.3120,lng:69.2580,rating:4.6,reviews:923,markerColor:"#E65100",wiki:"Uzbek_cuisine",desc:"The definitive traditional Uzbek restaurant in Tashkent. The Saturday plov is legendary — people queue at 9am for the huge cauldron of Tashkent-style plov.",tip:"The plov sells out by noon on Saturdays. Arrive at 10am.",hours:"9am–10pm daily",fee:"$"},
+      {id:"tr4",name:"Noorani Indian",type:"restaurant",icon:"🌶️",lat:41.3000,lng:69.2600,rating:4.5,reviews:543,markerColor:"#E65100",wiki:"Uzbek_cuisine",desc:"The best Indian food in Central Asia. Rich curries, tandoor breads, and a warm atmosphere. Popular with expats and locals alike.",tip:"The butter chicken and garlic naan are the ones to order. Good lassi too.",hours:"12pm–11pm daily",fee:"$$"},
+];
+
+export default eat;
