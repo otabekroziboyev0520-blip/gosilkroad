@@ -1252,7 +1252,7 @@ export default function HomePage({ onOpenPlan }) {
                   📧 EMAIL
                 </a>
                 <a
-                  href="https://instagram.com/silkroute.uz"
+                  href="https://instagram.com/gosilkroad"
                   target="_blank"
                   rel="noreferrer"
                   style={{
