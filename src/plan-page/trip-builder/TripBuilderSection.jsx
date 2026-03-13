@@ -9,8 +9,8 @@ const COLORS = {
   text: "#EDE4D0",
   muted: "#8A7A60",
   dim: "#6B5E45",
-  success: "#7EC97E",
-  danger: "#E07A7A",
+  good: "#7EC97E",
+  warn: "#E0B15A",
 };
 
 const CITY_DATA = {
@@ -18,245 +18,127 @@ const CITY_DATA = {
     id: "tashkent",
     name: "Tashkent",
     icon: "🏙️",
+    routeOrder: 1,
     minDays: 1,
     idealDays: 2,
-    tags: ["food", "culture", "architecture", "city-life"],
-    routeOrder: 1,
-    daily: {
-      budget: 48,
-      comfort: 92,
-      luxury: 180,
-    },
-    highlights: [
-      "Khast Imam Complex",
-      "Chorsu Bazaar",
-      "Tashkent Metro stations",
-      "Amir Temur Square",
-    ],
-    paceNotes: {
-      relaxed: "A good first stop to recover from arrival and ease into the trip.",
-      balanced: "Great for one full day before moving to the classic Silk Road cities.",
-      fast: "Can be done in half to one day if your focus is Samarkand and Bukhara.",
+    tags: ["food", "culture", "architecture", "history"],
+    highlights: {
+      history: ["Khast Imam Complex", "Amir Temur Museum"],
+      architecture: ["Tashkent Metro", "Khast Imam Complex"],
+      food: ["Chorsu Bazaar", "National plov center"],
+      culture: ["Broadway / city walk", "Applied Arts Museum"],
+      photography: ["Tashkent Metro", "Amir Temur Square"],
+      nature: ["Japanese Garden", "Anhor area stroll"],
+      adventure: ["Day-start urban exploring", "Fast local market stop"],
     },
   },
   samarkand: {
     id: "samarkand",
     name: "Samarkand",
     icon: "🕌",
+    routeOrder: 2,
     minDays: 2,
     idealDays: 3,
     tags: ["history", "architecture", "photography", "culture", "food"],
-    routeOrder: 2,
-    daily: {
-      budget: 55,
-      comfort: 105,
-      luxury: 210,
-    },
-    highlights: [
-      "Registan",
-      "Shah-i-Zinda",
-      "Gur-e-Amir",
-      "Bibi-Khanym Mosque",
-      "Siab Bazaar",
-    ],
-    paceNotes: {
-      relaxed: "Needs at least 2.5–3 days if you want sunrise/sunset moments and less rushing.",
-      balanced: "Perfect with 2 full days.",
-      fast: "Possible in 1.5–2 days, but you will move quickly.",
+    highlights: {
+      history: ["Registan", "Gur-e-Amir"],
+      architecture: ["Shah-i-Zinda", "Bibi-Khanym Mosque"],
+      food: ["Siab Bazaar", "Traditional dinner near old city"],
+      culture: ["Slow old-town walking", "Craft + tea stop"],
+      photography: ["Registan at golden hour", "Shah-i-Zinda details"],
+      nature: ["Afrosiab hill viewpoints", "Quiet garden stop"],
+      adventure: ["Dense monument run", "Early start for full coverage"],
     },
   },
   bukhara: {
     id: "bukhara",
     name: "Bukhara",
     icon: "🏛️",
+    routeOrder: 3,
     minDays: 2,
     idealDays: 3,
     tags: ["history", "architecture", "culture", "photography", "food"],
-    routeOrder: 3,
-    daily: {
-      budget: 50,
-      comfort: 96,
-      luxury: 195,
-    },
-    highlights: [
-      "Poi Kalyan",
-      "Ark Fortress",
-      "Lyabi-Hauz",
-      "Trading Domes",
-      "Chor Minor",
-    ],
-    paceNotes: {
-      relaxed: "Excellent for slow wandering, rooftop dinners, and old-city atmosphere.",
-      balanced: "2 full days is usually the sweet spot.",
-      fast: "Possible in 1.5–2 days for a classic highlights run.",
+    highlights: {
+      history: ["Ark Fortress", "Poi Kalyan"],
+      architecture: ["Poi Kalyan ensemble", "Chor Minor"],
+      food: ["Lyabi-Hauz dinner", "Old-city teahouse lunch"],
+      culture: ["Trading Domes walk", "Old alley wandering"],
+      photography: ["Blue hour at Lyabi-Hauz", "Poi Kalyan skyline"],
+      nature: ["Quiet courtyard break", "Canal-side walk"],
+      adventure: ["Compact old-city circuit", "Multi-site walking route"],
     },
   },
   khiva: {
     id: "khiva",
     name: "Khiva",
     icon: "🧱",
+    routeOrder: 4,
     minDays: 2,
     idealDays: 2,
     tags: ["history", "architecture", "photography", "culture"],
-    routeOrder: 4,
-    daily: {
-      budget: 52,
-      comfort: 98,
-      luxury: 190,
-    },
-    highlights: [
-      "Ichan Kala",
-      "Kalta Minor",
-      "Tosh Hovli Palace",
-      "Islam Khoja Minaret",
-    ],
-    paceNotes: {
-      relaxed: "Best with 2 days so you can enjoy the walled city without sprinting.",
-      balanced: "Works well with 1.5–2 days.",
-      fast: "You can see the core in one intense day, but it is tight.",
+    highlights: {
+      history: ["Ichan Kala", "Tosh Hovli Palace"],
+      architecture: ["Kalta Minor", "Islam Khoja Minaret"],
+      food: ["Terrace dinner inside old city", "Tea break in Ichan Kala"],
+      culture: ["Wall-city slow walk", "Craft stalls"],
+      photography: ["Sunset over Ichan Kala", "Minaret viewpoints"],
+      nature: ["Quiet wall-edge walk", "Sunrise city atmosphere"],
+      adventure: ["Fast fortress circuit", "Tower climb"],
     },
   },
   fergana: {
     id: "fergana",
     name: "Fergana Valley",
     icon: "🌿",
+    routeOrder: 5,
     minDays: 2,
     idealDays: 3,
-    tags: ["culture", "food", "crafts", "local-life"],
-    routeOrder: 5,
-    daily: {
-      budget: 46,
-      comfort: 88,
-      luxury: 170,
-    },
-    highlights: [
-      "Rishtan ceramics",
-      "Margilan silk workshops",
-      "Kokand palace",
-      "Local bazaars",
-    ],
-    paceNotes: {
-      relaxed: "Best for travelers who want authentic local craft and slower travel.",
-      balanced: "Works in 2 days if focused.",
-      fast: "Not ideal for a rushed first Uzbekistan trip.",
+    tags: ["culture", "food", "crafts"],
+    highlights: {
+      history: ["Kokand Palace", "Regional town center"],
+      architecture: ["Kokand Palace", "Traditional workshops"],
+      food: ["Market lunch", "Family-style local dinner"],
+      culture: ["Margilan silk workshop", "Rishtan ceramics"],
+      photography: ["Craft process shots", "Colorful local bazaar"],
+      nature: ["Countryside roadside views", "Garden stop"],
+      adventure: ["Workshop-hopping day", "Regional road route"],
     },
   },
   mountains: {
     id: "mountains",
     name: "Mountains / Chimgan",
     icon: "🏔️",
+    routeOrder: 6,
     minDays: 1,
     idealDays: 2,
     tags: ["nature", "adventure", "photography"],
-    routeOrder: 6,
-    daily: {
-      budget: 58,
-      comfort: 112,
-      luxury: 220,
-    },
-    highlights: [
-      "Chimgan",
-      "Amirsoy area",
-      "Charvak reservoir",
-      "Scenic mountain viewpoints",
-    ],
-    paceNotes: {
-      relaxed: "Great as a decompress day around Tashkent.",
-      balanced: "Best as a 1–2 day add-on.",
-      fast: "Fine as a day trip if time is tight.",
+    highlights: {
+      history: ["Light cultural stop en route", "Scenic village break"],
+      architecture: ["Resort viewpoint areas", "Cable-car structures"],
+      food: ["Lakeside lunch", "Mountain tea stop"],
+      culture: ["Weekend local atmosphere", "Resort promenade"],
+      photography: ["Charvak views", "Mountain lookout"],
+      nature: ["Chimgan viewpoints", "Charvak reservoir"],
+      adventure: ["Cable car / active viewpoint day", "Light outdoor activity"],
     },
   },
   nukus: {
     id: "nukus",
     name: "Nukus / Karakalpakstan",
     icon: "🎨",
+    routeOrder: 7,
     minDays: 2,
     idealDays: 3,
-    tags: ["art", "history", "adventure", "photography"],
-    routeOrder: 7,
-    daily: {
-      budget: 60,
-      comfort: 118,
-      luxury: 235,
+    tags: ["art", "history", "photography", "adventure"],
+    highlights: {
+      history: ["Savitsky Museum", "Regional history stops"],
+      architecture: ["Soviet-era city forms", "Museum exterior + spaces"],
+      food: ["Simple regional lunch", "Local dinner stop"],
+      culture: ["Museum deep dive", "Regional atmosphere"],
+      photography: ["Museum zones", "Remote landscape textures"],
+      nature: ["Desert edge scenery", "Regional landscape stop"],
+      adventure: ["Long-distance special-interest route", "Museum-focused day"],
     },
-    highlights: [
-      "Savitsky Museum",
-      "Desert landscapes",
-      "Remote regional culture",
-    ],
-    paceNotes: {
-      relaxed: "A strong special-interest extension, not usually a first-timer core stop.",
-      balanced: "Best if paired with extra days.",
-      fast: "Too ambitious for a short trip.",
-    },
-  },
-};
-
-const CLASSIC_ROUTE = ["tashkent", "samarkand", "bukhara", "khiva"];
-
-const TRANSPORT_MAP = {
-  "tashkent-samarkand": {
-    best: "🚄 Afrosiyob high-speed train",
-    bestTime: "2h 10m",
-    bestPrice: "$10–15",
-    alt: "🚕 Private transfer / taxi",
-    altTime: "4h 30m",
-    altPrice: "$60–90",
-    why: "Fastest, easiest, and best first intercity leg.",
-  },
-  "samarkand-bukhara": {
-    best: "🚆 Train",
-    bestTime: "1h 50m–2h 10m",
-    bestPrice: "$8–12",
-    alt: "🚕 Taxi",
-    altTime: "4h",
-    altPrice: "$45–65",
-    why: "Train is the best value and most tourist-friendly option.",
-  },
-  "bukhara-khiva": {
-    best: "🚕 Shared/private taxi",
-    bestTime: "4h 30m–5h",
-    bestPrice: "$12–60",
-    alt: "✈️ Domestic flight (when available)",
-    altTime: "1h + airport time",
-    altPrice: "$30–80",
-    why: "Overland is common; flights save time when schedules line up.",
-  },
-  "tashkent-bukhara": {
-    best: "🚄 Train",
-    bestTime: "4h",
-    bestPrice: "$14–22",
-    alt: "✈️ Domestic flight",
-    altTime: "1h 10m + airport time",
-    altPrice: "$30–70",
-    why: "Train is usually the smoothest choice unless time is critical.",
-  },
-  "tashkent-khiva": {
-    best: "✈️ Domestic flight to Urgench + short transfer",
-    bestTime: "1h 30m + transfer",
-    bestPrice: "$40–80",
-    alt: "🚆 Overnight train",
-    altTime: "12h+",
-    altPrice: "$20–35",
-    why: "Flying saves huge time on short itineraries.",
-  },
-  "tashkent-fergana": {
-    best: "🚗 Car / transfer",
-    bestTime: "4h 30m–5h 30m",
-    bestPrice: "$45–80",
-    alt: "🚆/🚕 mixed route",
-    altTime: "Varies",
-    altPrice: "$20–50",
-    why: "Good if you want crafts, local life, and something less touristy.",
-  },
-  "tashkent-mountains": {
-    best: "🚗 Day trip / transfer",
-    bestTime: "1h 30m–2h",
-    bestPrice: "$20–50",
-    alt: "🚌 Shared transport",
-    altTime: "2h+",
-    altPrice: "$5–15",
-    why: "Easy add-on for nature without changing your whole route.",
   },
 };
 
@@ -268,8 +150,6 @@ const INTEREST_OPTIONS = [
   { id: "photography", label: "Photography", icon: "📸" },
   { id: "culture", label: "Culture", icon: "🎭" },
   { id: "adventure", label: "Adventure", icon: "⛰️" },
-  { id: "crafts", label: "Crafts", icon: "🧵" },
-  { id: "art", label: "Art", icon: "🎨" },
 ];
 
 const STYLE_OPTIONS = [
@@ -281,22 +161,56 @@ const STYLE_OPTIONS = [
 ];
 
 const PACE_OPTIONS = [
-  { id: "relaxed", label: "Relaxed", desc: "Fewer cities, more depth" },
+  { id: "relaxed", label: "Relaxed", desc: "Fewer sights, more breathing room" },
   { id: "balanced", label: "Balanced", desc: "Best for most travelers" },
-  { id: "fast", label: "Fast-paced", desc: "More places, quicker stops" },
+  { id: "fast", label: "Fast-paced", desc: "More coverage, tighter schedule" },
 ];
 
 const BUDGET_OPTIONS = [
-  { id: "budget", label: "Budget", desc: "Hostels / simple stays / local transport" },
-  { id: "comfort", label: "Comfort", desc: "Good hotels / smoother transport / nicer meals" },
-  { id: "luxury", label: "Luxury", desc: "Premium stays / private comfort / best locations" },
+  { id: "budget", label: "Budget" },
+  { id: "comfort", label: "Comfort" },
+  { id: "luxury", label: "Luxury" },
 ];
 
-const TRAVELER_OPTIONS = [
-  { id: "solo", label: "Solo" },
-  { id: "couple", label: "Couple" },
-  { id: "family", label: "Family / group" },
-];
+const CLASSIC_ROUTE = ["tashkent", "samarkand", "bukhara", "khiva"];
+
+const TRANSPORT_MAP = {
+  "tashkent-samarkand": {
+    best: "🚄 Afrosiyob train",
+    time: "2h 10m",
+    price: "$10–15",
+  },
+  "samarkand-bukhara": {
+    best: "🚆 Train",
+    time: "2h",
+    price: "$8–12",
+  },
+  "bukhara-khiva": {
+    best: "🚕 Taxi or ✈️ domestic flight",
+    time: "5h overland / faster by air",
+    price: "$12–60",
+  },
+  "tashkent-bukhara": {
+    best: "🚄 Train or ✈️ flight",
+    time: "4h train / ~1h flight",
+    price: "$18–50",
+  },
+  "tashkent-khiva": {
+    best: "✈️ Flight to Urgench + transfer",
+    time: "~2h total air side + transfer",
+    price: "$40–80",
+  },
+  "tashkent-mountains": {
+    best: "🚗 Private transfer / day trip",
+    time: "1.5–2h",
+    price: "$20–50",
+  },
+  "tashkent-fergana": {
+    best: "🚗 Road transfer",
+    time: "5h",
+    price: "$45–80",
+  },
+};
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -306,262 +220,11 @@ function getLegInfo(from, to) {
   return (
     TRANSPORT_MAP[`${from}-${to}`] ||
     TRANSPORT_MAP[`${to}-${from}`] || {
-      best: "🚕 Flexible transfer / train depending on date",
-      bestTime: "Varies",
-      bestPrice: "Varies",
-      alt: "🧭 Custom route",
-      altTime: "Varies",
-      altPrice: "Varies",
-      why: "This leg depends on your exact route and season.",
+      best: "🚕 Flexible regional transfer",
+      time: "Varies",
+      price: "Varies",
     }
   );
-}
-
-function scoreCity(city, interests, style, arrivalCity) {
-  let score = 0;
-
-  if (city.id === arrivalCity) score += 30;
-
-  interests.forEach((interest) => {
-    if (city.tags.includes(interest)) score += 10;
-  });
-
-  if (style === "classic" && ["tashkent", "samarkand", "bukhara", "khiva"].includes(city.id)) {
-    score += 12;
-  }
-  if (style === "slow" && ["bukhara", "fergana", "mountains"].includes(city.id)) {
-    score += 10;
-  }
-  if (style === "photo" && ["samarkand", "bukhara", "khiva", "mountains"].includes(city.id)) {
-    score += 10;
-  }
-  if (style === "food" && ["tashkent", "samarkand", "bukhara", "fergana"].includes(city.id)) {
-    score += 10;
-  }
-  if (style === "mixed") score += 4;
-
-  return score;
-}
-
-function pickCities({ selectedCities, days, interests, style, pace, arrivalCity }) {
-  const baseSelected = selectedCities.length ? selectedCities : CLASSIC_ROUTE;
-
-  const scored = Object.values(CITY_DATA)
-    .map((city) => ({
-      ...city,
-      score: scoreCity(city, interests, style, arrivalCity),
-    }))
-    .sort((a, b) => b.score - a.score);
-
-  const maxCities =
-    days <= 4 ? (pace === "fast" ? 3 : 2) : days <= 6 ? (pace === "fast" ? 4 : 3) : days <= 9 ? 4 : 5;
-
-  const pickedSet = new Set(baseSelected);
-  for (const city of scored) {
-    if (pickedSet.size >= maxCities) break;
-    pickedSet.add(city.id);
-  }
-
-  const picked = [...pickedSet]
-    .filter((id) => CITY_DATA[id])
-    .sort((a, b) => CITY_DATA[a].routeOrder - CITY_DATA[b].routeOrder);
-
-  if (!picked.includes(arrivalCity)) {
-    picked.unshift(arrivalCity);
-  }
-
-  return [...new Set(picked)];
-}
-
-function allocateDays(route, totalDays, pace) {
-  const paceBonus =
-    pace === "relaxed" ? 0.5 : pace === "fast" ? -0.35 : 0;
-
-  const weights = route.map((id) => {
-    const city = CITY_DATA[id];
-    return city.idealDays + paceBonus;
-  });
-
-  const sumWeights = weights.reduce((a, b) => a + b, 0);
-
-  let allocations = route.map((id, index) => {
-    const city = CITY_DATA[id];
-    const proportional = Math.round((weights[index] / sumWeights) * totalDays);
-    return clamp(proportional || 1, 1, city.idealDays + 1);
-  });
-
-  const minNeeded = route.reduce((sum, id) => sum + Math.min(1, CITY_DATA[id].minDays), 0);
-  if (totalDays < minNeeded) {
-    allocations = route.map(() => 1);
-  }
-
-  let current = allocations.reduce((a, b) => a + b, 0);
-
-  while (current > totalDays) {
-    let changed = false;
-    for (let i = allocations.length - 1; i >= 0; i -= 1) {
-      if (allocations[i] > 1) {
-        allocations[i] -= 1;
-        current -= 1;
-        changed = true;
-        if (current === totalDays) break;
-      }
-    }
-    if (!changed) break;
-  }
-
-  while (current < totalDays) {
-    let bestIndex = 0;
-    let bestNeed = -Infinity;
-    for (let i = 0; i < route.length; i += 1) {
-      const city = CITY_DATA[route[i]];
-      const need = city.idealDays - allocations[i];
-      if (need > bestNeed) {
-        bestNeed = need;
-        bestIndex = i;
-      }
-    }
-    allocations[bestIndex] += 1;
-    current += 1;
-  }
-
-  return route.map((id, i) => ({
-    cityId: id,
-    city: CITY_DATA[id],
-    days: allocations[i],
-  }));
-}
-
-function buildTransport(route) {
-  const legs = [];
-  for (let i = 0; i < route.length - 1; i += 1) {
-    const from = route[i];
-    const to = route[i + 1];
-    legs.push({
-      from,
-      to,
-      ...getLegInfo(from, to),
-    });
-  }
-  return legs;
-}
-
-function buildBudget({ allocation, budgetLevel, travelerType, transportLegs }) {
-  const multiplier =
-    travelerType === "solo" ? 1 :
-    travelerType === "couple" ? 1.75 :
-    2.4;
-
-  const lodgingFoodDaily = allocation.reduce((sum, item) => {
-    return sum + item.city.daily[budgetLevel] * item.days;
-  }, 0);
-
-  const transportBase = transportLegs.reduce((sum, leg) => {
-    const numeric = leg.bestPrice.match(/\$([0-9]+)/);
-    return sum + (numeric ? Number(numeric[1]) : 20);
-  }, 0);
-
-  const attractionPerDay =
-    budgetLevel === "budget" ? 8 :
-    budgetLevel === "comfort" ? 16 :
-    30;
-
-  const base = lodgingFoodDaily + transportBase + attractionPerDay * allocation.reduce((s, a) => s + a.days, 0);
-  const subtotal = Math.round(base * multiplier);
-  const low = Math.round(subtotal * 0.92);
-  const high = Math.round(subtotal * 1.12);
-
-  return {
-    perPersonDaily: Math.round(lodgingFoodDaily / allocation.reduce((s, a) => s + a.days, 0)),
-    lodgingFoodDaily,
-    transportBase: Math.round(transportBase * multiplier),
-    attractions: Math.round(attractionPerDay * allocation.reduce((s, a) => s + a.days, 0) * multiplier),
-    totalLow: low,
-    totalHigh: high,
-    totalMid: subtotal,
-  };
-}
-
-function buildReadiness({ days, route, pace, budgetLevel }) {
-  const warnings = [];
-
-  if (days <= 4 && route.length >= 4) {
-    warnings.push("You are trying to fit too many cities into a short trip.");
-  }
-  if (pace === "fast" && route.includes("khiva") && days <= 5) {
-    warnings.push("Khiva is beautiful but can make a short itinerary feel rushed.");
-  }
-  if (budgetLevel === "budget" && route.includes("khiva")) {
-    warnings.push("Khiva can push transport costs higher than you expect.");
-  }
-  if (!warnings.length) {
-    warnings.push("This route looks realistic for a first Uzbekistan trip.");
-  }
-
-  return warnings;
-}
-
-function buildDayPlan({ allocation, pace, interests, style, transportLegs }) {
-  const plan = [];
-  let dayCounter = 1;
-
-  allocation.forEach((item, cityIndex) => {
-    for (let d = 1; d <= item.days; d += 1) {
-      const title =
-        d === 1 && cityIndex === 0
-          ? `Day ${dayCounter} — Arrive in ${item.city.name}`
-          : `Day ${dayCounter} — ${item.city.name}`;
-
-      const activities = [];
-
-      if (d === 1 && cityIndex > 0) {
-        const leg = transportLegs[cityIndex - 1];
-        activities.push(`Travel from ${CITY_DATA[leg.from].name} to ${CITY_DATA[leg.to].name} via ${leg.best}.`);
-      }
-
-      if (interests.includes("history")) {
-        activities.push(`Focus on ${item.city.highlights.slice(0, 2).join(" and ")}.`);
-      } else {
-        activities.push(`Explore ${item.city.highlights[0]} and the surrounding old quarter.`);
-      }
-
-      if (interests.includes("photography")) {
-        activities.push("Plan one sunrise or golden-hour stop for your best photos.");
-      }
-      if (interests.includes("food")) {
-        activities.push("Add a local lunch stop and one market or teahouse experience.");
-      }
-      if (interests.includes("culture")) {
-        activities.push("Leave time for walking slowly, people-watching, and artisan streets.");
-      }
-      if (interests.includes("nature") && item.city.id === "mountains") {
-        activities.push("Use the day for scenic viewpoints and a light outdoor activity.");
-      }
-
-      if (pace === "relaxed") {
-        activities.push("Keep the evening free for a relaxed dinner and short wander.");
-      }
-      if (pace === "fast") {
-        activities.push("Start early to cover the main highlights efficiently.");
-      }
-      if (style === "photo") {
-        activities.push("Prioritize the most visual sites before midday crowds.");
-      }
-      if (style === "food") {
-        activities.push("Treat dinner as part of the itinerary, not an afterthought.");
-      }
-
-      plan.push({
-        day: dayCounter,
-        title,
-        activities: activities.slice(0, 4),
-      });
-
-      dayCounter += 1;
-    }
-  });
-
-  return plan;
 }
 
 function Chip({ active, children, onClick, small = false }) {
@@ -610,7 +273,7 @@ function SectionLabel({ children }) {
         fontFamily: "'Cinzel',serif",
         fontSize: 10,
         color: COLORS.gold,
-        letterSpacing: "0.15em",
+        letterSpacing: "0.14em",
         marginBottom: 12,
       }}
     >
@@ -619,32 +282,324 @@ function SectionLabel({ children }) {
   );
 }
 
+function MiniStat({ label, value }) {
+  return (
+    <div
+      style={{
+        padding: "12px 10px",
+        borderRadius: 12,
+        background: "rgba(255,255,255,0.03)",
+        border: `1px solid ${COLORS.border}`,
+        textAlign: "center",
+      }}
+    >
+      <div
+        style={{
+          fontFamily: "'Cinzel',serif",
+          fontSize: 10,
+          color: COLORS.gold,
+          letterSpacing: "0.08em",
+          marginBottom: 6,
+        }}
+      >
+        {label}
+      </div>
+      <div
+        style={{
+          fontFamily: "'Cinzel',serif",
+          fontSize: 13,
+          color: COLORS.text,
+          lineHeight: 1.3,
+        }}
+      >
+        {value}
+      </div>
+    </div>
+  );
+}
+
+function toggleListItem(prev, id, fallback) {
+  if (prev.includes(id)) {
+    const next = prev.filter((x) => x !== id);
+    return next.length ? next : fallback;
+  }
+  return [...prev, id];
+}
+
+function scoreCity(city, interests, style, arrivalCity) {
+  let score = 0;
+  if (city.id === arrivalCity) score += 30;
+
+  interests.forEach((interest) => {
+    if (city.tags.includes(interest)) score += 10;
+  });
+
+  if (style === "classic" && ["tashkent", "samarkand", "bukhara", "khiva"].includes(city.id)) score += 12;
+  if (style === "slow" && ["bukhara", "fergana", "mountains"].includes(city.id)) score += 10;
+  if (style === "photo" && ["samarkand", "bukhara", "khiva", "mountains"].includes(city.id)) score += 11;
+  if (style === "food" && ["tashkent", "samarkand", "bukhara", "fergana"].includes(city.id)) score += 10;
+  if (style === "mixed") score += 4;
+
+  return score;
+}
+
+function pickCities({ selectedCities, days, interests, style, pace, arrivalCity }) {
+  const baseSelected = selectedCities.length ? selectedCities : CLASSIC_ROUTE;
+
+  const scored = Object.values(CITY_DATA)
+    .map((city) => ({
+      ...city,
+      score: scoreCity(city, interests, style, arrivalCity),
+    }))
+    .sort((a, b) => b.score - a.score);
+
+  const maxCities =
+    days <= 4 ? (pace === "fast" ? 3 : 2) :
+    days <= 6 ? (pace === "fast" ? 4 : 3) :
+    days <= 9 ? 4 : 5;
+
+  const pickedSet = new Set(baseSelected);
+  for (const city of scored) {
+    if (pickedSet.size >= maxCities) break;
+    pickedSet.add(city.id);
+  }
+
+  const picked = [...pickedSet]
+    .filter((id) => CITY_DATA[id])
+    .sort((a, b) => CITY_DATA[a].routeOrder - CITY_DATA[b].routeOrder);
+
+  if (!picked.includes(arrivalCity)) picked.unshift(arrivalCity);
+
+  return [...new Set(picked)];
+}
+
+function allocateDays(route, totalDays, pace) {
+  const paceBonus = pace === "relaxed" ? 0.6 : pace === "fast" ? -0.35 : 0;
+
+  const weights = route.map((id) => CITY_DATA[id].idealDays + paceBonus);
+  const sumWeights = weights.reduce((a, b) => a + b, 0);
+
+  let allocations = route.map((id, index) => {
+    const city = CITY_DATA[id];
+    const proportional = Math.round((weights[index] / sumWeights) * totalDays);
+    return clamp(proportional || 1, 1, city.idealDays + 1);
+  });
+
+  let current = allocations.reduce((a, b) => a + b, 0);
+
+  while (current > totalDays) {
+    let changed = false;
+    for (let i = allocations.length - 1; i >= 0; i -= 1) {
+      if (allocations[i] > 1) {
+        allocations[i] -= 1;
+        current -= 1;
+        changed = true;
+        if (current === totalDays) break;
+      }
+    }
+    if (!changed) break;
+  }
+
+  while (current < totalDays) {
+    let bestIndex = 0;
+    let bestNeed = -Infinity;
+
+    for (let i = 0; i < route.length; i += 1) {
+      const need = CITY_DATA[route[i]].idealDays - allocations[i];
+      if (need > bestNeed) {
+        bestNeed = need;
+        bestIndex = i;
+      }
+    }
+
+    allocations[bestIndex] += 1;
+    current += 1;
+  }
+
+  return route.map((id, i) => ({
+    cityId: id,
+    city: CITY_DATA[id],
+    days: allocations[i],
+  }));
+}
+
+function buildTransport(route) {
+  const legs = [];
+  for (let i = 0; i < route.length - 1; i += 1) {
+    const from = route[i];
+    const to = route[i + 1];
+    legs.push({
+      from,
+      to,
+      ...getLegInfo(from, to),
+    });
+  }
+  return legs;
+}
+
+function buildSummary({ allocation, pace, style, interests }) {
+  const totalDays = allocation.reduce((sum, item) => sum + item.days, 0);
+  const cities = allocation.map((item) => item.city.name).join(" → ");
+  const dominantInterest = interests[0] || "mixed";
+
+  let vibe = "a balanced Silk Road trip";
+  if (style === "photo") vibe = "a visually strong, photography-focused trip";
+  if (style === "food") vibe = "a food-and-culture route";
+  if (style === "slow") vibe = "a slower, more atmospheric journey";
+  if (pace === "fast") vibe = "a high-coverage, fast-moving route";
+  if (pace === "relaxed") vibe = "a gentle, low-stress itinerary";
+
+  return `${totalDays}-day route through ${cities}. Best for travelers who want ${vibe} with a ${dominantInterest}-leaning experience.`;
+}
+
+function getInterestHighlight(city, interest) {
+  const list = city.highlights[interest];
+  if (list && list.length) return list;
+  return city.highlights.history || [];
+}
+
+function uniquePush(arr, value) {
+  if (value && !arr.includes(value)) arr.push(value);
+}
+
+function buildSlotContent({ city, slot, interests, style, pace, isArrival, isTravelDay, leg, localDayIndex, totalCityDays }) {
+  const lines = [];
+
+  if (isTravelDay && slot === "morning" && leg) {
+    uniquePush(lines, `Travel to ${city.name} via ${leg.best} (${leg.time}).`);
+  }
+
+  const preferredInterestOrder = [
+    ...interests,
+    "history",
+    "architecture",
+    "culture",
+    "food",
+    "photography",
+    "nature",
+    "adventure",
+  ];
+
+  if (slot === "morning") {
+    const key = preferredInterestOrder[0] || "history";
+    const picks = getInterestHighlight(city, key);
+    if (isArrival && !isTravelDay) {
+      uniquePush(lines, `Easy start with hotel check-in and a light first walk around ${city.name}.`);
+    }
+    uniquePush(lines, `Visit ${picks[0] || city.name + " highlights"} while energy is high and crowds are lower.`);
+    if (style === "photo") uniquePush(lines, "Prioritize the most photogenic stop early for cleaner light.");
+    if (pace === "fast") uniquePush(lines, "Start early to cover your main priorities efficiently.");
+  }
+
+  if (slot === "afternoon") {
+    const secondInterest = preferredInterestOrder[1] || preferredInterestOrder[0] || "culture";
+    const picks = getInterestHighlight(city, secondInterest);
+    if (isTravelDay) {
+      uniquePush(lines, `Check in, reset briefly, then explore ${picks[0] || city.name + " old quarter"}.`);
+    } else {
+      uniquePush(lines, `Continue with ${picks[0] || city.name + " core sights"} and nearby areas.`);
+    }
+    if (interests.includes("food")) uniquePush(lines, "Make lunch part of the plan with a local restaurant or bazaar stop.");
+    if (pace === "relaxed") uniquePush(lines, "Leave some unstructured time for cafés, tea, or slow wandering.");
+  }
+
+  if (slot === "evening") {
+    if (interests.includes("photography")) {
+      const photoSpot = getInterestHighlight(city, "photography")[0];
+      uniquePush(lines, `Catch golden hour or evening atmosphere at ${photoSpot || city.name + " center"}.`);
+    } else {
+      uniquePush(lines, `Enjoy a relaxed evening walk and dinner in one of ${city.name}'s best atmosphere areas.`);
+    }
+
+    if (interests.includes("food")) uniquePush(lines, "Choose a memorable dinner rather than treating food as an afterthought.");
+    if (style === "slow") uniquePush(lines, "Keep the evening light so the trip never feels rushed.");
+    if (localDayIndex === totalCityDays && totalCityDays > 1) uniquePush(lines, "Wrap the day early enough to stay fresh for the next leg.");
+  }
+
+  return lines.slice(0, 3);
+}
+
+function buildStructuredItinerary({ allocation, transportLegs, pace, interests, style }) {
+  const itinerary = [];
+  let dayCounter = 1;
+
+  allocation.forEach((item, cityIndex) => {
+    for (let d = 1; d <= item.days; d += 1) {
+      const travelLeg = d === 1 && cityIndex > 0 ? transportLegs[cityIndex - 1] : null;
+      const isTravelDay = Boolean(travelLeg);
+      const isArrival = dayCounter === 1;
+
+      itinerary.push({
+        day: dayCounter,
+        cityId: item.cityId,
+        city: item.city,
+        title:
+          isTravelDay
+            ? `Day ${dayCounter} — Arrive in ${item.city.name}`
+            : isArrival
+            ? `Day ${dayCounter} — Start in ${item.city.name}`
+            : `Day ${dayCounter} — ${item.city.name}`,
+        transport: travelLeg,
+        morning: buildSlotContent({
+          city: item.city,
+          slot: "morning",
+          interests,
+          style,
+          pace,
+          isArrival,
+          isTravelDay,
+          leg: travelLeg,
+          localDayIndex: d,
+          totalCityDays: item.days,
+        }),
+        afternoon: buildSlotContent({
+          city: item.city,
+          slot: "afternoon",
+          interests,
+          style,
+          pace,
+          isArrival,
+          isTravelDay,
+          leg: travelLeg,
+          localDayIndex: d,
+          totalCityDays: item.days,
+        }),
+        evening: buildSlotContent({
+          city: item.city,
+          slot: "evening",
+          interests,
+          style,
+          pace,
+          isArrival,
+          isTravelDay,
+          leg: travelLeg,
+          localDayIndex: d,
+          totalCityDays: item.days,
+        }),
+      });
+
+      dayCounter += 1;
+    }
+  });
+
+  return itinerary;
+}
+
 export default function TripBuilderSection() {
   const [days, setDays] = useState(7);
   const [budgetLevel, setBudgetLevel] = useState("comfort");
-  const [travelerType, setTravelerType] = useState("solo");
   const [style, setStyle] = useState("classic");
   const [pace, setPace] = useState("balanced");
   const [arrivalCity, setArrivalCity] = useState("tashkent");
   const [selectedCities, setSelectedCities] = useState(["tashkent", "samarkand", "bukhara"]);
   const [interests, setInterests] = useState(["history", "architecture", "culture"]);
-  const [hasBuilt, setHasBuilt] = useState(true);
 
   const toggleInterest = (id) => {
-    setInterests((prev) => {
-      if (prev.includes(id)) return prev.length === 1 ? prev : prev.filter((x) => x !== id);
-      return [...prev, id];
-    });
+    setInterests((prev) => toggleListItem(prev, id, ["history"]));
   };
 
   const toggleCity = (id) => {
-    setSelectedCities((prev) => {
-      if (prev.includes(id)) {
-        if (prev.length === 1) return prev;
-        return prev.filter((x) => x !== id);
-      }
-      return [...prev, id];
-    });
+    setSelectedCities((prev) => toggleListItem(prev, id, ["tashkent"]));
   };
 
   const result = useMemo(() => {
@@ -659,38 +614,23 @@ export default function TripBuilderSection() {
 
     const allocation = allocateDays(route, days, pace);
     const transportLegs = buildTransport(route);
-    const budget = buildBudget({
+    const summary = buildSummary({ allocation, pace, style, interests });
+    const itinerary = buildStructuredItinerary({
       allocation,
-      budgetLevel,
-      travelerType,
       transportLegs,
-    });
-    const warnings = buildReadiness({
-      days,
-      route,
-      pace,
-      budgetLevel,
-    });
-    const dayPlan = buildDayPlan({
-      allocation,
       pace,
       interests,
       style,
-      transportLegs,
     });
-
-    const routeLabel = allocation.map((item) => item.city.name).join(" → ");
 
     return {
       route,
       allocation,
       transportLegs,
-      budget,
-      warnings,
-      dayPlan,
-      routeLabel,
+      summary,
+      itinerary,
     };
-  }, [selectedCities, days, interests, style, pace, arrivalCity, budgetLevel, travelerType]);
+  }, [selectedCities, days, interests, style, pace, arrivalCity]);
 
   return (
     <div>
@@ -716,8 +656,8 @@ export default function TripBuilderSection() {
           maxWidth: 760,
         }}
       >
-        Build a realistic Uzbekistan route in under a minute. Choose your travel style,
-        budget, pace, and interests — then get a route, day split, transport plan, and cost estimate.
+        Build a day-by-day Uzbekistan itinerary with realistic pacing, city flow,
+        transport moments, and clearer morning / afternoon / evening planning.
       </p>
 
       <div
@@ -750,24 +690,6 @@ export default function TripBuilderSection() {
                   key={option.id}
                   active={budgetLevel === option.id}
                   onClick={() => setBudgetLevel(option.id)}
-                >
-                  {option.label}
-                </Chip>
-              ))}
-            </div>
-            <div style={helperTextStyle}>
-              {BUDGET_OPTIONS.find((x) => x.id === budgetLevel)?.desc}
-            </div>
-          </div>
-
-          <div style={{ marginBottom: 18 }}>
-            <div style={subheadingStyle}>Who is traveling?</div>
-            <div style={chipWrapStyle}>
-              {TRAVELER_OPTIONS.map((option) => (
-                <Chip
-                  key={option.id}
-                  active={travelerType === option.id}
-                  onClick={() => setTravelerType(option.id)}
                 >
                   {option.label}
                 </Chip>
@@ -820,7 +742,7 @@ export default function TripBuilderSection() {
           </div>
 
           <div style={{ marginBottom: 18 }}>
-            <div style={subheadingStyle}>What are you interested in?</div>
+            <div style={subheadingStyle}>Interests</div>
             <div style={chipWrapStyle}>
               {INTEREST_OPTIONS.map((option) => (
                 <Chip
@@ -852,30 +774,9 @@ export default function TripBuilderSection() {
                 ))}
             </div>
             <div style={helperTextStyle}>
-              Select your must-visit places. The planner will keep the route realistic.
+              The planner keeps the route realistic even if you choose more cities than fit comfortably.
             </div>
           </div>
-
-          <button
-            type="button"
-            onClick={() => setHasBuilt(true)}
-            style={{
-              marginTop: 18,
-              width: "100%",
-              padding: "14px 18px",
-              border: "none",
-              borderRadius: 999,
-              background: "linear-gradient(135deg,#C9A84C,#8B6914)",
-              color: COLORS.bg,
-              fontFamily: "'Cinzel',serif",
-              fontSize: 12,
-              letterSpacing: "0.15em",
-              cursor: "pointer",
-              boxShadow: "0 10px 24px rgba(201,168,76,0.2)",
-            }}
-          >
-            BUILD MY TRIP →
-          </button>
         </Card>
 
         <div style={{ display: "grid", gap: 18 }}>
@@ -885,7 +786,7 @@ export default function TripBuilderSection() {
               border: "1px solid rgba(201,168,76,0.2)",
             }}
           >
-            <SectionLabel>ROUTE SUMMARY</SectionLabel>
+            <SectionLabel>ITINERARY SUMMARY</SectionLabel>
 
             <div
               style={{
@@ -896,7 +797,7 @@ export default function TripBuilderSection() {
                 lineHeight: 1.4,
               }}
             >
-              {result.routeLabel}
+              {result.route.map((id) => CITY_DATA[id].name).join(" → ")}
             </div>
 
             <p
@@ -908,51 +809,18 @@ export default function TripBuilderSection() {
                 marginBottom: 14,
               }}
             >
-              {days}-day {style.replace("-", " ")} trip · {pace} pace · {travelerType} ·{" "}
-              {budgetLevel} budget
+              {result.summary}
             </p>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10 }}>
               <MiniStat label="Cities" value={String(result.route.length)} />
-              <MiniStat label="Budget" value={`$${result.budget.totalLow}–${result.budget.totalHigh}`} />
-              <MiniStat label="Best fit" value={pace} />
-            </div>
-
-            <div
-              style={{
-                marginTop: 16,
-                padding: "12px 14px",
-                background: "rgba(201,168,76,0.08)",
-                borderRadius: 10,
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "'Cinzel',serif",
-                  fontSize: 10,
-                  color: COLORS.gold,
-                  letterSpacing: "0.12em",
-                  marginBottom: 6,
-                }}
-              >
-                WHY THIS ROUTE
-              </div>
-              <p
-                style={{
-                  fontFamily: "'Crimson Pro',serif",
-                  fontSize: 14,
-                  color: COLORS.muted,
-                  lineHeight: 1.6,
-                }}
-              >
-                This route prioritizes your interests while keeping intercity movement realistic.
-                It avoids the common mistake of cramming too many long-distance stops into one trip.
-              </p>
+              <MiniStat label="Pace" value={pace} />
+              <MiniStat label="Style" value={style.replace("-", " ")} />
             </div>
           </Card>
 
           <Card>
-            <SectionLabel>DAY SPLIT BY CITY</SectionLabel>
+            <SectionLabel>DAY SPLIT</SectionLabel>
 
             <div style={{ display: "grid", gap: 10 }}>
               {result.allocation.map((item) => (
@@ -980,15 +848,8 @@ export default function TripBuilderSection() {
                     >
                       {item.city.icon} {item.city.name}
                     </div>
-                    <div
-                      style={{
-                        fontFamily: "'Crimson Pro',serif",
-                        color: COLORS.dim,
-                        fontSize: 13,
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {item.city.paceNotes[pace]}
+                    <div style={helperTextStyle}>
+                      Strong fit for {interests[0] || "mixed"} travelers with {pace} pacing.
                     </div>
                   </div>
 
@@ -1013,269 +874,178 @@ export default function TripBuilderSection() {
         </div>
       </div>
 
-      {hasBuilt && (
-        <div style={{ display: "grid", gap: 18, marginTop: 22 }}>
-          <Card>
-            <SectionLabel>TRANSPORT PLAN</SectionLabel>
+      <div style={{ marginTop: 22, display: "grid", gap: 18 }}>
+        <Card>
+          <SectionLabel>DAY-BY-DAY STRUCTURED ITINERARY</SectionLabel>
 
-            <div style={{ display: "grid", gap: 12 }}>
-              {result.transportLegs.length === 0 ? (
-                <div style={emptyStateStyle}>
-                  Your route only has one city, so no intercity transport is needed.
-                </div>
-              ) : (
-                result.transportLegs.map((leg, index) => (
-                  <div
-                    key={`${leg.from}-${leg.to}-${index}`}
-                    style={{
-                      padding: 16,
-                      borderRadius: 14,
-                      border: `1px solid ${COLORS.border}`,
-                      background: "rgba(255,255,255,0.01)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontFamily: "'Cinzel',serif",
-                        fontSize: 14,
-                        color: COLORS.text,
-                        marginBottom: 8,
-                      }}
-                    >
-                      {CITY_DATA[leg.from].name} → {CITY_DATA[leg.to].name}
-                    </div>
-
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-                      <div style={transportBoxStyle}>
-                        <div style={transportLabelStyle}>BEST OPTION</div>
-                        <div style={transportValueStyle}>{leg.best}</div>
-                        <div style={transportMetaStyle}>
-                          {leg.bestTime} · {leg.bestPrice}
-                        </div>
-                      </div>
-
-                      <div style={transportBoxStyle}>
-                        <div style={transportLabelStyle}>ALTERNATIVE</div>
-                        <div style={transportValueStyle}>{leg.alt}</div>
-                        <div style={transportMetaStyle}>
-                          {leg.altTime} · {leg.altPrice}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div style={{ ...helperTextStyle, marginTop: 10 }}>{leg.why}</div>
-                  </div>
-                ))
-              )}
-            </div>
-          </Card>
-
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
-            <Card>
-              <SectionLabel>COST ESTIMATE</SectionLabel>
-
-              <div style={{ display: "grid", gap: 10 }}>
-                <PriceRow label="Daily average" value={`~$${result.budget.perPersonDaily}/day`} />
-                <PriceRow label="Transport total" value={`$${result.budget.transportBase}`} />
-                <PriceRow label="Attractions / experiences" value={`$${result.budget.attractions}`} />
-                <PriceRow
-                  label="Estimated trip total"
-                  value={`$${result.budget.totalLow}–${result.budget.totalHigh}`}
-                  strong
-                />
-              </div>
-
+          <div style={{ display: "grid", gap: 14 }}>
+            {result.itinerary.map((day) => (
               <div
+                key={day.day}
                 style={{
-                  marginTop: 14,
-                  padding: "12px 14px",
-                  borderRadius: 10,
-                  background: "rgba(201,168,76,0.08)",
+                  border: `1px solid ${COLORS.border}`,
+                  borderRadius: 16,
+                  overflow: "hidden",
+                  background: "rgba(255,255,255,0.01)",
                 }}
               >
-                <div style={transportLabelStyle}>BUDGET NOTE</div>
-                <div style={helperTextStyle}>
-                  This estimate is designed to feel realistic, not fake-cheap. It includes the
-                  trip style, route length, and likely transport choices.
-                </div>
-              </div>
-            </Card>
-
-            <Card>
-              <SectionLabel>REALITY CHECK</SectionLabel>
-
-              <div style={{ display: "grid", gap: 10 }}>
-                {result.warnings.map((warning, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      display: "flex",
-                      gap: 10,
-                      alignItems: "flex-start",
-                      padding: "12px 14px",
-                      borderRadius: 12,
-                      border: `1px solid ${COLORS.border}`,
-                      background: "rgba(255,255,255,0.01)",
-                    }}
-                  >
-                    <span style={{ fontSize: 16, lineHeight: 1 }}>💡</span>
-                    <span
-                      style={{
-                        fontFamily: "'Crimson Pro',serif",
-                        color: COLORS.muted,
-                        fontSize: 14,
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      {warning}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </Card>
-          </div>
-
-          <Card>
-            <SectionLabel>DAY-BY-DAY DRAFT ITINERARY</SectionLabel>
-
-            <div style={{ display: "grid", gap: 12 }}>
-              {result.dayPlan.map((day) => (
                 <div
-                  key={day.day}
                   style={{
-                    display: "grid",
-                    gridTemplateColumns: "58px 1fr",
-                    gap: 14,
-                    alignItems: "start",
-                    paddingBottom: 12,
+                    padding: "14px 16px",
                     borderBottom: `1px solid ${COLORS.border}`,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    alignItems: "center",
+                    flexWrap: "wrap",
                   }}
                 >
-                  <div
-                    style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: 999,
-                      background: COLORS.gold,
-                      color: COLORS.bg,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontFamily: "'Cinzel',serif",
-                      fontSize: 13,
-                      fontWeight: 700,
-                    }}
-                  >
-                    {day.day}
-                  </div>
-
                   <div>
                     <div
                       style={{
                         fontFamily: "'Cinzel',serif",
                         fontSize: 14,
                         color: COLORS.text,
-                        marginBottom: 8,
+                        marginBottom: 4,
                       }}
                     >
                       {day.title}
                     </div>
-
-                    <div style={{ display: "grid", gap: 6 }}>
-                      {day.activities.map((item, idx) => (
-                        <div
-                          key={idx}
-                          style={{
-                            fontFamily: "'Crimson Pro',serif",
-                            color: COLORS.muted,
-                            fontSize: 14,
-                            lineHeight: 1.6,
-                          }}
-                        >
-                          • {item}
-                        </div>
-                      ))}
+                    <div style={helperTextStyle}>
+                      {day.city.icon} {day.city.name}
                     </div>
                   </div>
+
+                  {day.transport && (
+                    <div
+                      style={{
+                        padding: "8px 12px",
+                        borderRadius: 999,
+                        background: "rgba(201,168,76,0.08)",
+                        border: `1px solid ${COLORS.border}`,
+                        color: COLORS.gold,
+                        fontFamily: "'Cinzel',serif",
+                        fontSize: 10,
+                        letterSpacing: "0.04em",
+                      }}
+                    >
+                      {day.transport.best} · {day.transport.time}
+                    </div>
+                  )}
                 </div>
-              ))}
-            </div>
-          </Card>
-        </div>
-      )}
+
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3,1fr)",
+                    gap: 0,
+                  }}
+                >
+                  <TimeBlock title="Morning" items={day.morning} />
+                  <TimeBlock title="Afternoon" items={day.afternoon} />
+                  <TimeBlock title="Evening" items={day.evening} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card>
+          <SectionLabel>TRANSPORT FLOW</SectionLabel>
+
+          <div style={{ display: "grid", gap: 10 }}>
+            {result.transportLegs.length === 0 ? (
+              <div style={emptyStateStyle}>
+                Single-city trip — no intercity transport needed.
+              </div>
+            ) : (
+              result.transportLegs.map((leg, index) => (
+                <div
+                  key={`${leg.from}-${leg.to}-${index}`}
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr auto",
+                    gap: 12,
+                    alignItems: "center",
+                    padding: "12px 14px",
+                    borderRadius: 12,
+                    border: `1px solid ${COLORS.border}`,
+                    background: "rgba(255,255,255,0.01)",
+                  }}
+                >
+                  <div>
+                    <div
+                      style={{
+                        fontFamily: "'Cinzel',serif",
+                        fontSize: 13,
+                        color: COLORS.text,
+                        marginBottom: 4,
+                      }}
+                    >
+                      {CITY_DATA[leg.from].name} → {CITY_DATA[leg.to].name}
+                    </div>
+                    <div style={helperTextStyle}>
+                      {leg.best} · {leg.time} · {leg.price}
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      padding: "8px 12px",
+                      borderRadius: 999,
+                      background: "rgba(201,168,76,0.08)",
+                      color: COLORS.gold,
+                      fontFamily: "'Cinzel',serif",
+                      fontSize: 10,
+                    }}
+                  >
+                    Move {index + 1}
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </Card>
+      </div>
     </div>
   );
 }
 
-function MiniStat({ label, value }) {
+function TimeBlock({ title, items }) {
   return (
     <div
       style={{
-        padding: "12px 10px",
-        borderRadius: 12,
-        background: "rgba(255,255,255,0.03)",
-        border: `1px solid ${COLORS.border}`,
-        textAlign: "center",
+        padding: 16,
+        borderRight: `1px solid ${COLORS.border}`,
       }}
     >
       <div
         style={{
           fontFamily: "'Cinzel',serif",
-          fontSize: 10,
+          fontSize: 11,
           color: COLORS.gold,
           letterSpacing: "0.08em",
-          marginBottom: 6,
+          marginBottom: 10,
         }}
       >
-        {label}
+        {title.toUpperCase()}
       </div>
-      <div
-        style={{
-          fontFamily: "'Cinzel',serif",
-          fontSize: 13,
-          color: COLORS.text,
-          lineHeight: 1.3,
-        }}
-      >
-        {value}
-      </div>
-    </div>
-  );
-}
 
-function PriceRow({ label, value, strong = false }) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        gap: 10,
-        alignItems: "center",
-        padding: "12px 14px",
-        borderRadius: 12,
-        border: `1px solid ${COLORS.border}`,
-        background: strong ? "rgba(201,168,76,0.08)" : "rgba(255,255,255,0.01)",
-      }}
-    >
-      <span
-        style={{
-          fontFamily: "'Crimson Pro',serif",
-          fontSize: 14,
-          color: COLORS.muted,
-        }}
-      >
-        {label}
-      </span>
-      <span
-        style={{
-          fontFamily: "'Cinzel',serif",
-          fontSize: 13,
-          color: strong ? COLORS.gold : COLORS.text,
-          whiteSpace: "nowrap",
-        }}
-      >
-        {value}
-      </span>
+      <div style={{ display: "grid", gap: 8 }}>
+        {items.map((item, idx) => (
+          <div
+            key={idx}
+            style={{
+              fontFamily: "'Crimson Pro',serif",
+              color: COLORS.muted,
+              fontSize: 14,
+              lineHeight: 1.6,
+            }}
+          >
+            • {item}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -1309,33 +1079,4 @@ const emptyStateStyle = {
   fontFamily: "'Crimson Pro',serif",
   color: COLORS.dim,
   fontSize: 14,
-};
-
-const transportBoxStyle = {
-  padding: "12px 14px",
-  borderRadius: 12,
-  border: `1px solid ${COLORS.border}`,
-  background: "rgba(255,255,255,0.01)",
-};
-
-const transportLabelStyle = {
-  fontFamily: "'Cinzel',serif",
-  fontSize: 10,
-  color: COLORS.gold,
-  letterSpacing: "0.1em",
-  marginBottom: 6,
-};
-
-const transportValueStyle = {
-  fontFamily: "'Crimson Pro',serif",
-  fontSize: 15,
-  color: COLORS.text,
-  marginBottom: 4,
-  lineHeight: 1.4,
-};
-
-const transportMetaStyle = {
-  fontFamily: "'Crimson Pro',serif",
-  fontSize: 13,
-  color: COLORS.dim,
 };
