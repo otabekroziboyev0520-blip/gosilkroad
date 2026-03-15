@@ -10,11 +10,21 @@ export default function HomePage({ onOpenPlan }) {
   const [filter, setFilter] = useState("all");
   const [selected, setSelected] = useState(null);
   const [navScrolled, setNavScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.innerWidth <= 768;
+  });
 
   useEffect(() => {
     const onScroll = () => setNavScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
   useEffect(() => {
@@ -48,11 +58,11 @@ export default function HomePage({ onOpenPlan }) {
         color: "#EDE4D0",
         fontFamily: "Georgia,serif",
         minHeight: "100vh",
+        overflowX: "hidden",
       }}
     >
       <style>{GLOBAL_CSS}</style>
 
-      {/* NAV */}
       <nav
         style={{
           position: "fixed",
@@ -60,11 +70,12 @@ export default function HomePage({ onOpenPlan }) {
           left: 0,
           right: 0,
           zIndex: 500,
-          padding: "0 32px",
-          height: 60,
+          padding: isMobile ? "0 12px" : "0 32px",
+          height: isMobile ? 64 : 60,
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          gap: isMobile ? 8 : 16,
           background: navScrolled ? "rgba(10,8,5,0.96)" : "transparent",
           backdropFilter: navScrolled ? "blur(20px)" : "none",
           borderBottom: navScrolled
@@ -74,72 +85,86 @@ export default function HomePage({ onOpenPlan }) {
         }}
       >
         <div
-          style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}
+          style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", minWidth: 0 }}
           onClick={() => scrollTo("hero")}
         >
-          <span style={{ fontSize: 20 }}>🌙</span>
+          <span style={{ fontSize: isMobile ? 18 : 20 }}>🌙</span>
           <span
             style={{
               fontFamily: "'Cinzel',serif",
-              fontSize: 15,
+              fontSize: isMobile ? 12 : 15,
               fontWeight: 700,
               color: "#C9A84C",
               letterSpacing: "0.08em",
+              whiteSpace: "nowrap",
             }}
           >
             GoSilkRoad
           </span>
         </div>
 
-        <div style={{ display: "flex", gap: 28 }}>
+        <div
+          style={{
+            display: "flex",
+            gap: isMobile ? 10 : 28,
+            minWidth: 0,
+            flex: 1,
+            justifyContent: "center",
+          }}
+        >
           {[["Explore", "map"], ["Cities", "cities"], ["Plan", "plan"]].map(
             ([l, id]) => (
               <span
                 key={id}
                 className="nl"
-                onClick={() => (id === "plan" ? onOpenPlan() : scrollTo(id))}
+                onClick={() =>
+                  id === "plan" ? onOpenPlan("itinerary") : scrollTo(id)
+                }
                 style={{
                   fontFamily: "'Cinzel',serif",
-                  fontSize: 11,
-                  letterSpacing: "0.15em",
+                  fontSize: isMobile ? 9 : 11,
+                  letterSpacing: isMobile ? "0.08em" : "0.15em",
                   color: "#8A7A60",
+                  whiteSpace: "nowrap",
                 }}
               >
-                {l.toUpperCase()}
+                {isMobile ? l : l.toUpperCase()}
               </span>
             )
           )}
         </div>
 
         <button
-          onClick={() => onOpenPlan()}
+          onClick={() => onOpenPlan("itinerary")}
           style={{
-            padding: "7px 18px",
+            padding: isMobile ? "8px 12px" : "7px 18px",
             background: "linear-gradient(135deg,#C9A84C,#8B6914)",
             border: "none",
             borderRadius: 20,
             fontFamily: "'Cinzel',serif",
-            fontSize: 10,
-            letterSpacing: "0.15em",
+            fontSize: isMobile ? 9 : 10,
+            letterSpacing: isMobile ? "0.08em" : "0.15em",
             color: "#0A0805",
             cursor: "pointer",
+            whiteSpace: "nowrap",
+            flexShrink: 0,
           }}
         >
           PLAN TRIP
         </button>
       </nav>
 
-      {/* HERO */}
       <section
         id="hero"
         style={{
-          height: "100vh",
-          minHeight: 640,
+          minHeight: "100vh",
           position: "relative",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
+          paddingTop: isMobile ? 84 : 60,
+          paddingBottom: isMobile ? 28 : 0,
         }}
       >
         <div
@@ -196,8 +221,10 @@ export default function HomePage({ onOpenPlan }) {
           style={{
             position: "relative",
             textAlign: "center",
-            padding: "0 20px",
+            padding: isMobile ? "0 14px" : "0 20px",
             animation: "heroIn 1.2s ease",
+            width: "100%",
+            maxWidth: 1100,
           }}
         >
           <div
@@ -206,10 +233,11 @@ export default function HomePage({ onOpenPlan }) {
               alignItems: "center",
               gap: 10,
               border: "1px solid #C9A84C33",
-              padding: "5px 18px",
+              padding: isMobile ? "5px 12px" : "5px 18px",
               borderRadius: 20,
-              marginBottom: 28,
+              marginBottom: isMobile ? 20 : 28,
               background: "rgba(201,168,76,0.06)",
+              maxWidth: "100%",
             }}
           >
             <span
@@ -219,14 +247,16 @@ export default function HomePage({ onOpenPlan }) {
                 borderRadius: "50%",
                 background: "#C9A84C",
                 boxShadow: "0 0 8px #C9A84C",
+                flexShrink: 0,
               }}
             />
             <span
               style={{
                 fontFamily: "'Cinzel',serif",
-                fontSize: 10,
+                fontSize: isMobile ? 8 : 10,
                 color: "#C9A84C",
-                letterSpacing: "0.25em",
+                letterSpacing: isMobile ? "0.12em" : "0.25em",
+                whiteSpace: isMobile ? "normal" : "nowrap",
               }}
             >
               TRUSTED BY 50,000+ TRAVELERS
@@ -254,7 +284,7 @@ export default function HomePage({ onOpenPlan }) {
               fontWeight: 300,
               fontStyle: "italic",
               color: "#C9A84C",
-              marginBottom: 24,
+              marginBottom: isMobile ? 18 : 24,
               letterSpacing: "0.06em",
             }}
           >
@@ -280,40 +310,54 @@ export default function HomePage({ onOpenPlan }) {
             <button
               onClick={() => scrollTo("map")}
               style={{
-                padding: "13px 32px",
+                padding: isMobile ? "12px 20px" : "13px 32px",
                 background: "linear-gradient(135deg,#C9A84C,#8B6914)",
                 border: "none",
                 borderRadius: 28,
                 fontFamily: "'Cinzel',serif",
-                fontSize: 11,
-                letterSpacing: "0.2em",
+                fontSize: isMobile ? 10 : 11,
+                letterSpacing: isMobile ? "0.1em" : "0.2em",
                 color: "#0A0805",
                 cursor: "pointer",
                 boxShadow: "0 8px 32px rgba(201,168,76,0.3)",
+                width: isMobile ? "100%" : "auto",
+                maxWidth: isMobile ? 320 : "none",
               }}
             >
               EXPLORE THE MAP
             </button>
 
             <button
-              onClick={() => onOpenPlan()}
+              onClick={() => onOpenPlan("itinerary")}
               style={{
-                padding: "13px 32px",
+                padding: isMobile ? "12px 20px" : "13px 32px",
                 background: "transparent",
                 border: "1px solid #C9A84C44",
                 borderRadius: 28,
                 fontFamily: "'Cinzel',serif",
-                fontSize: 11,
-                letterSpacing: "0.2em",
+                fontSize: isMobile ? 10 : 11,
+                letterSpacing: isMobile ? "0.1em" : "0.2em",
                 color: "#C9A84C",
                 cursor: "pointer",
+                width: isMobile ? "100%" : "auto",
+                maxWidth: isMobile ? 320 : "none",
               }}
             >
               PLAN YOUR TRIP
             </button>
           </div>
 
-          <div style={{ display: "flex", gap: 40, justifyContent: "center", marginTop: 56, flexWrap: "wrap" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: isMobile ? "repeat(2,minmax(0,1fr))" : "repeat(4,minmax(0,1fr))",
+              gap: isMobile ? 18 : 40,
+              justifyContent: "center",
+              marginTop: isMobile ? 36 : 56,
+              maxWidth: isMobile ? 420 : 900,
+              marginInline: "auto",
+            }}
+          >
             {[["7M+", "Tourists in 2024"], ["4", "UNESCO Sites"], ["2,500+", "Years of History"], ["80+", "Mapped Locations"]].map(
               ([n, l]) => (
                 <div key={l} style={{ textAlign: "center" }}>
@@ -344,9 +388,8 @@ export default function HomePage({ onOpenPlan }) {
         </div>
       </section>
 
-      {/* WHY UZBEKISTAN */}
-      <section style={{ padding: "80px 32px", maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 52 }}>
+      <section style={{ padding: isMobile ? "56px 14px" : "80px 32px", maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: isMobile ? 34 : 52 }}>
           <div
             style={{
               fontFamily: "'Cinzel',serif",
@@ -397,7 +440,7 @@ export default function HomePage({ onOpenPlan }) {
               key={i}
               className="hc"
               style={{
-                padding: 28,
+                padding: isMobile ? 22 : 28,
                 background: "#111009",
                 border: "1px solid #1A1610",
                 borderRadius: 14,
@@ -430,8 +473,7 @@ export default function HomePage({ onOpenPlan }) {
         </div>
       </section>
 
-      {/* CITIES */}
-      <section id="cities" style={{ padding: "0 32px 60px", maxWidth: 1200, margin: "0 auto" }}>
+      <section id="cities" style={{ padding: isMobile ? "0 14px 48px" : "0 32px 60px", maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div
             style={{
@@ -612,8 +654,7 @@ export default function HomePage({ onOpenPlan }) {
         </div>
       </section>
 
-      {/* MAP & EXPLORE */}
-      <section id="map" style={{ padding: "0 32px 60px", maxWidth: 1200, margin: "0 auto" }}>
+      <section id="map" style={{ padding: isMobile ? "0 14px 48px" : "0 32px 60px", maxWidth: 1200, margin: "0 auto" }}>
         <div
           style={{
             display: "flex",
@@ -706,24 +747,32 @@ export default function HomePage({ onOpenPlan }) {
               animation: "fadeUp 0.3s ease",
             }}
           >
-            <div style={{ display: "grid", gridTemplateColumns: "320px 1fr", gap: 0 }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: isMobile ? "1fr" : "320px 1fr",
+                gap: 0,
+              }}
+            >
               <div
                 style={{
                   padding: 22,
-                  borderRight: `1px solid ${city.color}22`,
+                  borderRight: isMobile ? "none" : `1px solid ${city.color}22`,
+                  borderBottom: isMobile ? `1px solid ${city.color}22` : "none",
                   background: `${city.color}05`,
                 }}
               >
                 <ImageGallery item={selected} cityColor={city.color} />
               </div>
 
-              <div style={{ padding: 26 }}>
+              <div style={{ padding: isMobile ? 18 : 26 }}>
                 <div
                   style={{
                     display: "flex",
                     alignItems: "flex-start",
                     justifyContent: "space-between",
                     marginBottom: 14,
+                    gap: 12,
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
@@ -797,6 +846,7 @@ export default function HomePage({ onOpenPlan }) {
                       fontSize: 24,
                       cursor: "pointer",
                       padding: 4,
+                      flexShrink: 0,
                     }}
                   >
                     ×
@@ -949,8 +999,7 @@ export default function HomePage({ onOpenPlan }) {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section style={{ padding: "0 32px 80px", maxWidth: 1200, margin: "0 auto" }}>
+      <section style={{ padding: isMobile ? "0 14px 56px" : "0 32px 80px", maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 50 }}>
           <div
             style={{
@@ -979,19 +1028,20 @@ export default function HomePage({ onOpenPlan }) {
               display: "inline-flex",
               alignItems: "center",
               gap: 8,
-              padding: "5px 18px",
+              padding: isMobile ? "5px 12px" : "5px 18px",
               border: "1px solid #C9A84C33",
               borderRadius: 20,
               background: "rgba(201,168,76,0.05)",
+              maxWidth: "100%",
             }}
           >
             <span style={{ color: "#C9A84C", fontSize: 13 }}>★★★★★</span>
             <span
               style={{
                 fontFamily: "'Cinzel',serif",
-                fontSize: 10,
+                fontSize: isMobile ? 8 : 10,
                 color: "#6B5E45",
-                letterSpacing: "0.1em",
+                letterSpacing: isMobile ? "0.06em" : "0.1em",
               }}
             >
               4.9/5 AVERAGE · 50,000+ TRAVELERS
@@ -1011,7 +1061,7 @@ export default function HomePage({ onOpenPlan }) {
               key={i}
               className="hc"
               style={{
-                padding: 26,
+                padding: isMobile ? 22 : 26,
                 background: "#111009",
                 border: "1px solid #1A1610",
                 borderRadius: 14,
@@ -1111,16 +1161,14 @@ export default function HomePage({ onOpenPlan }) {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer style={{ borderTop: "1px solid #1A1610", background: "#0A0805" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "52px 32px 32px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "40px 14px 24px" : "52px 32px 32px" }}>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
+              gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr",
               gap: 32,
               marginBottom: 48,
-              flexWrap: "wrap",
             }}
           >
             <div>
@@ -1150,7 +1198,7 @@ export default function HomePage({ onOpenPlan }) {
                 Your intelligent companion along the ancient Silk Road. Built
                 with love for Uzbekistan and the travelers who discover it.
               </p>
-              <div style={{ display: "flex", gap: 12 }}>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <a
                   href="mailto:otabek.roziboyev11@gmail.com"
                   style={{
@@ -1240,11 +1288,11 @@ export default function HomePage({ onOpenPlan }) {
                 ["📅 Trip Builder", "itinerary"],
                 ["🎒 Packing List", "packing"],
                 ["✈️ Getting Here", "flights"],
-              ].map(([label]) => (
+              ].map(([label, sectionId]) => (
                 <div
                   key={label}
                   onClick={() => {
-                    onOpenPlan();
+                    onOpenPlan(sectionId);
                   }}
                   className="nl"
                   style={{
@@ -1267,7 +1315,8 @@ export default function HomePage({ onOpenPlan }) {
               paddingTop: 24,
               display: "flex",
               justifyContent: "space-between",
-              alignItems: "center",
+              alignItems: isMobile ? "flex-start" : "center",
+              flexDirection: isMobile ? "column" : "row",
               flexWrap: "wrap",
               gap: 12,
             }}
@@ -1283,7 +1332,7 @@ export default function HomePage({ onOpenPlan }) {
               © 2026 GoSilkRoad · Built for travelers who want to go deeper
             </p>
             <button
-              onClick={() => onOpenPlan()}
+              onClick={() => onOpenPlan("itinerary")}
               style={{
                 padding: "8px 24px",
                 background: "transparent",

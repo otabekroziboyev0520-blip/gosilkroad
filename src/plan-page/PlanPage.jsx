@@ -9,16 +9,20 @@ import TripBuilderSection from "./trip-builder/TripBuilderSection";
 import BudgetCalculatorSection from "./budget-calculator/BudgetCalculatorSection";
 import RouteOptimizerSection from "./route-optimizer/RouteOptimizerSection";
 
-function PlanPage({ onBack }) {
+function PlanPage({ onBack, initialSection = "visa" }) {
   const [visaCountry, setVisaCountry] = useState("");
   const [visaResult, setVisaResult] = useState(null);
   const [checkedItems, setCheckedItems] = useState(new Set());
   const [activeSeason, setActiveSeason] = useState(null);
-  const [activeSection, setActiveSection] = useState("visa");
+  const [activeSection, setActiveSection] = useState(initialSection);
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window === "undefined") return false;
     return window.innerWidth <= 768;
   });
+
+  useEffect(() => {
+    setActiveSection(initialSection || "visa");
+  }, [initialSection]);
 
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth <= 768);

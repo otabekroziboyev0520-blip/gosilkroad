@@ -6,13 +6,22 @@ import ChatBot from "./ai/ChatBot";
 
 export default function App() {
   const [page, setPage] = useState("home");
+  const [planInitialSection, setPlanInitialSection] = useState("visa");
+
+  const openPlan = (section = "visa") => {
+    setPlanInitialSection(section);
+    setPage("plan");
+  };
 
   return (
     <>
       {page === "home" ? (
-        <HomePage onOpenPlan={() => setPage("plan")} />
+        <HomePage onOpenPlan={openPlan} />
       ) : (
-        <PlanPage onBack={() => setPage("home")} />
+        <PlanPage
+          onBack={() => setPage("home")}
+          initialSection={planInitialSection}
+        />
       )}
       <ChatBot />
 
