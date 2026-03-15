@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const COLORS = {
   bg: "#0A0805",
@@ -212,6 +212,21 @@ const TRANSPORT_MAP = {
   },
 };
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.innerWidth <= 768;
+  });
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  return isMobile;
+}
+
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
@@ -243,6 +258,7 @@ function Chip({ active, children, onClick, small = false }) {
         letterSpacing: "0.04em",
         cursor: "pointer",
         transition: "all 0.2s ease",
+        textAlign: "left",
       }}
     >
       {children}
@@ -258,6 +274,7 @@ function Card({ children, style = {} }) {
         border: `1px solid ${COLORS.border}`,
         borderRadius: 16,
         padding: 18,
+        minWidth: 0,
         ...style,
       }}
     >
@@ -291,6 +308,7 @@ function MiniStat({ label, value }) {
         background: "rgba(255,255,255,0.03)",
         border: `1px solid ${COLORS.border}`,
         textAlign: "center",
+        minWidth: 0,
       }}
     >
       <div
@@ -310,6 +328,7 @@ function MiniStat({ label, value }) {
           fontSize: 13,
           color: COLORS.text,
           lineHeight: 1.3,
+          wordBreak: "break-word",
         }}
       >
         {value}
@@ -586,6 +605,7 @@ function buildStructuredItinerary({ allocation, transportLegs, pace, interests, 
 }
 
 export default function TripBuilderSection() {
+  const isMobile = useIsMobile();
   const [days, setDays] = useState(7);
   const [budgetLevel, setBudgetLevel] = useState("comfort");
   const [style, setStyle] = useState("classic");
@@ -633,7 +653,7 @@ export default function TripBuilderSection() {
   }, [selectedCities, days, interests, style, pace, arrivalCity]);
 
   return (
-    <div>
+    <div style={{ minWidth: 0 }}>
       <h2
         style={{
           fontFamily: "'Cinzel',serif",
@@ -663,7 +683,7 @@ export default function TripBuilderSection() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1.05fr 0.95fr",
+          gridTemplateColumns: isMobile ? "1fr" : "1.05fr 0.95fr",
           gap: 22,
           alignItems: "start",
         }}
@@ -779,7 +799,7 @@ export default function TripBuilderSection() {
           </div>
         </Card>
 
-        <div style={{ display: "grid", gap: 18 }}>
+        <div style={{ display: "grid", gap: 18, minWidth: 0 }}>
           <Card
             style={{
               background: "linear-gradient(180deg, rgba(201,168,76,0.08), rgba(17,16,9,1))",
@@ -795,6 +815,7 @@ export default function TripBuilderSection() {
                 color: COLORS.text,
                 marginBottom: 10,
                 lineHeight: 1.4,
+                wordBreak: "break-word",
               }}
             >
               {result.route.map((id) => CITY_DATA[id].name).join(" → ")}
@@ -812,7 +833,7 @@ export default function TripBuilderSection() {
               {result.summary}
             </p>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10 }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: 10 }}>
               <MiniStat label="Cities" value={String(result.route.length)} />
               <MiniStat label="Pace" value={pace} />
               <MiniStat label="Style" value={style.replace("-", " ")} />
@@ -828,7 +849,7 @@ export default function TripBuilderSection() {
                   key={item.cityId}
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "1fr auto",
+                    gridTemplateColumns: isMobile ? "1fr" : "1fr auto",
                     gap: 10,
                     alignItems: "center",
                     padding: "12px 14px",
@@ -837,7 +858,7 @@ export default function TripBuilderSection() {
                     background: "rgba(255,255,255,0.01)",
                   }}
                 >
-                  <div>
+                  <div style={{ minWidth: 0 }}>
                     <div
                       style={{
                         fontFamily: "'Cinzel',serif",
@@ -856,6 +877,7 @@ export default function TripBuilderSection() {
                   <div
                     style={{
                       minWidth: 66,
+                      width: isMobile ? "fit-content" : 66,
                       textAlign: "center",
                       padding: "10px 12px",
                       borderRadius: 10,
@@ -900,7 +922,7 @@ export default function TripBuilderSection() {
                     flexWrap: "wrap",
                   }}
                 >
-                  <div>
+                  <div style={{ minWidth: 0 }}>
                     <div
                       style={{
                         fontFamily: "'Cinzel',serif",
@@ -927,6 +949,8 @@ export default function TripBuilderSection() {
                         fontFamily: "'Cinzel',serif",
                         fontSize: 10,
                         letterSpacing: "0.04em",
+                        maxWidth: isMobile ? "100%" : "none",
+                        wordBreak: "break-word",
                       }}
                     >
                       {day.transport.best} · {day.transport.time}
@@ -937,13 +961,13 @@ export default function TripBuilderSection() {
                 <div
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(3,1fr)",
+                    gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)",
                     gap: 0,
                   }}
                 >
-                  <TimeBlock title="Morning" items={day.morning} />
-                  <TimeBlock title="Afternoon" items={day.afternoon} />
-                  <TimeBlock title="Evening" items={day.evening} />
+                  <TimeBlock title="Morning" items={day.morning} isMobile={isMobile} />
+                  <TimeBlock title="Afternoon" items={day.afternoon} isMobile={isMobile} />
+                  <TimeBlock title="Evening" items={day.evening} isMobile={isMobile} />
                 </div>
               </div>
             ))}
@@ -964,7 +988,7 @@ export default function TripBuilderSection() {
                   key={`${leg.from}-${leg.to}-${index}`}
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "1fr auto",
+                    gridTemplateColumns: isMobile ? "1fr" : "1fr auto",
                     gap: 12,
                     alignItems: "center",
                     padding: "12px 14px",
@@ -973,7 +997,7 @@ export default function TripBuilderSection() {
                     background: "rgba(255,255,255,0.01)",
                   }}
                 >
-                  <div>
+                  <div style={{ minWidth: 0 }}>
                     <div
                       style={{
                         fontFamily: "'Cinzel',serif",
@@ -997,6 +1021,7 @@ export default function TripBuilderSection() {
                       color: COLORS.gold,
                       fontFamily: "'Cinzel',serif",
                       fontSize: 10,
+                      width: isMobile ? "fit-content" : "auto",
                     }}
                   >
                     Move {index + 1}
@@ -1011,12 +1036,13 @@ export default function TripBuilderSection() {
   );
 }
 
-function TimeBlock({ title, items }) {
+function TimeBlock({ title, items, isMobile }) {
   return (
     <div
       style={{
         padding: 16,
-        borderRight: `1px solid ${COLORS.border}`,
+        borderRight: isMobile ? "none" : `1px solid ${COLORS.border}`,
+        borderBottom: isMobile ? `1px solid ${COLORS.border}` : "none",
       }}
     >
       <div

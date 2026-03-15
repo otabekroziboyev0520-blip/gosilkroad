@@ -1,6 +1,14 @@
 const GLOBAL_CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
-  *{box-sizing:border-box;margin:0;padding:0}
+  * {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
   html{scroll-behavior:smooth}
   ::-webkit-scrollbar{width:4px}
   ::-webkit-scrollbar-track{background:#0A0805}
