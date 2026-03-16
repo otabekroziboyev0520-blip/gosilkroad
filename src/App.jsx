@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import HomePage from "./home-page/HomePage";
 import PlanPage from "./plan-page/PlanPage";
 import ChatBot from "./ai/ChatBot";
@@ -23,9 +24,14 @@ export default function App() {
           initialSection={planInitialSection}
         />
       )}
+
       <ChatBot />
 
+      {/* Vercel Analytics */}
       <Analytics />
+
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
     </>
   );
 }
