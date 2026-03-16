@@ -431,8 +431,8 @@ export default function HomePage({ onOpenPlan }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill,minmax(250px,1fr))",
-            gap: 20,
+            gridTemplateColumns: isMobile ? "repeat(2,minmax(0,1fr))" : "repeat(auto-fill,minmax(250px,1fr))",
+            gap: isMobile ? 14 : 20,
           }}
         >
           {WHY_UZ.map((item, i) => (
@@ -440,17 +440,17 @@ export default function HomePage({ onOpenPlan }) {
               key={i}
               className="hc"
               style={{
-                padding: isMobile ? 22 : 28,
+                padding: isMobile ? 18 : 28,
                 background: "#111009",
                 border: "1px solid #1A1610",
                 borderRadius: 14,
               }}
             >
-              <div style={{ fontSize: 36, marginBottom: 16 }}>{item.icon}</div>
+              <div style={{ fontSize: isMobile ? 28 : 36, marginBottom: 16 }}>{item.icon}</div>
               <h3
                 style={{
                   fontFamily: "'Cinzel',serif",
-                  fontSize: 16,
+                  fontSize: isMobile ? 14 : 16,
                   color: "#EDE4D0",
                   marginBottom: 12,
                   fontWeight: 600,
@@ -461,9 +461,9 @@ export default function HomePage({ onOpenPlan }) {
               <p
                 style={{
                   fontFamily: "'Crimson Pro',serif",
-                  fontSize: 15,
+                  fontSize: isMobile ? 13 : 15,
                   color: "#6B5E45",
-                  lineHeight: 1.75,
+                  lineHeight: 1.7,
                 }}
               >
                 {item.desc}
@@ -501,8 +501,8 @@ export default function HomePage({ onOpenPlan }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))",
-            gap: 22,
+            gridTemplateColumns: isMobile ? "repeat(2,minmax(0,1fr))" : "repeat(auto-fill,minmax(260px,1fr))",
+            gap: isMobile ? 14 : 22,
           }}
         >
           {Object.values(cities).map((c) => (
@@ -528,7 +528,7 @@ export default function HomePage({ onOpenPlan }) {
             >
               <div
                 style={{
-                  height: 190,
+                  height: isMobile ? 130 : 190,
                   position: "relative",
                   overflow: "hidden",
                 }}
@@ -562,9 +562,9 @@ export default function HomePage({ onOpenPlan }) {
                       right: 12,
                       background: "#C9A84C",
                       color: "#111009",
-                      padding: "6px 12px",
+                      padding: isMobile ? "4px 8px" : "6px 12px",
                       borderRadius: 999,
-                      fontSize: 11,
+                      fontSize: isMobile ? 9 : 11,
                       fontWeight: 700,
                       letterSpacing: 1,
                     }}
@@ -574,11 +574,11 @@ export default function HomePage({ onOpenPlan }) {
                 )}
               </div>
 
-              <div style={{ padding: "18px 20px", background: "#0B0906" }}>
+              <div style={{ padding: isMobile ? "14px 14px" : "18px 20px", background: "#0B0906" }}>
                 <div
                   style={{
                     fontFamily: "'Cinzel',serif",
-                    fontSize: 17,
+                    fontSize: isMobile ? 14 : 17,
                     fontWeight: 600,
                     color: "#EDE4D0",
                     marginBottom: 4,
@@ -590,10 +590,10 @@ export default function HomePage({ onOpenPlan }) {
                 <div
                   style={{
                     fontFamily: "'Crimson Pro',serif",
-                    fontSize: 13,
+                    fontSize: isMobile ? 12 : 13,
                     color: "#5A4E3A",
                     fontStyle: "italic",
-                    marginBottom: 12,
+                    marginBottom: 10,
                   }}
                 >
                   {c.tagline}
@@ -602,7 +602,7 @@ export default function HomePage({ onOpenPlan }) {
                 <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
                   <span
                     style={{
-                      fontSize: 11,
+                      fontSize: isMobile ? 10 : 11,
                       color: "#3A3020",
                       fontFamily: "'Cinzel',serif",
                     }}
@@ -611,7 +611,7 @@ export default function HomePage({ onOpenPlan }) {
                   </span>
                   <span
                     style={{
-                      fontSize: 11,
+                      fontSize: isMobile ? 10 : 11,
                       color: "#2A2010",
                       fontFamily: "'Cinzel',serif",
                       margin: "0 4px",
@@ -621,7 +621,7 @@ export default function HomePage({ onOpenPlan }) {
                   </span>
                   <span
                     style={{
-                      fontSize: 11,
+                      fontSize: isMobile ? 10 : 11,
                       color: "#3A3020",
                       fontFamily: "'Cinzel',serif",
                     }}
@@ -630,7 +630,7 @@ export default function HomePage({ onOpenPlan }) {
                   </span>
                   <span
                     style={{
-                      fontSize: 11,
+                      fontSize: isMobile ? 10 : 11,
                       color: "#2A2010",
                       fontFamily: "'Cinzel',serif",
                       margin: "0 4px",
@@ -640,7 +640,7 @@ export default function HomePage({ onOpenPlan }) {
                   </span>
                   <span
                     style={{
-                      fontSize: 11,
+                      fontSize: isMobile ? 10 : 11,
                       color: "#3A3020",
                       fontFamily: "'Cinzel',serif",
                     }}
@@ -1052,8 +1052,8 @@ export default function HomePage({ onOpenPlan }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))",
-            gap: 18,
+            gridTemplateColumns: isMobile ? "repeat(2,minmax(0,1fr))" : "repeat(auto-fill,minmax(300px,1fr))",
+            gap: isMobile ? 14 : 18,
           }}
         >
           {TESTIMONIALS.map((t, i) => (
@@ -1061,7 +1061,7 @@ export default function HomePage({ onOpenPlan }) {
               key={i}
               className="hc"
               style={{
-                padding: isMobile ? 22 : 26,
+                padding: isMobile ? 18 : 26,
                 background: "#111009",
                 border: "1px solid #1A1610",
                 borderRadius: 14,
@@ -1076,7 +1076,7 @@ export default function HomePage({ onOpenPlan }) {
                   color: "#C9A84C",
                   opacity: 0.3,
                   fontFamily: "Georgia",
-                  fontSize: 60,
+                  fontSize: isMobile ? 42 : 60,
                   lineHeight: 1,
                 }}
               >
@@ -1086,14 +1086,14 @@ export default function HomePage({ onOpenPlan }) {
               <div style={{ display: "flex", gap: 12, marginBottom: 16, alignItems: "flex-start" }}>
                 <div
                   style={{
-                    width: 46,
-                    height: 46,
+                    width: isMobile ? 38 : 46,
+                    height: isMobile ? 38 : 46,
                     borderRadius: "50%",
                     background: "linear-gradient(135deg,#C9A84C22,#C9A84C44)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: 22,
+                    fontSize: isMobile ? 18 : 22,
                     border: "1px solid #C9A84C33",
                     flexShrink: 0,
                   }}
@@ -1105,7 +1105,7 @@ export default function HomePage({ onOpenPlan }) {
                   <div
                     style={{
                       fontFamily: "'Cinzel',serif",
-                      fontSize: 13,
+                      fontSize: isMobile ? 12 : 13,
                       color: "#EDE4D0",
                       marginBottom: 2,
                     }}
@@ -1115,7 +1115,7 @@ export default function HomePage({ onOpenPlan }) {
                   <div
                     style={{
                       fontFamily: "'Crimson Pro',serif",
-                      fontSize: 12,
+                      fontSize: isMobile ? 11 : 12,
                       color: "#5A4E3A",
                     }}
                   >
@@ -1148,9 +1148,9 @@ export default function HomePage({ onOpenPlan }) {
               <p
                 style={{
                   fontFamily: "'Crimson Pro',serif",
-                  fontSize: 14,
+                  fontSize: isMobile ? 13 : 14,
                   color: "#7A6E58",
-                  lineHeight: 1.8,
+                  lineHeight: 1.7,
                   fontStyle: "italic",
                 }}
               >
