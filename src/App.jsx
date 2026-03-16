@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import HomePage from "./home-page/HomePage";
@@ -6,31 +6,40 @@ import PlanPage from "./plan-page/PlanPage";
 import ChatBot from "./ai/ChatBot";
 
 export default function App() {
-  const [page, setPage] = useState("home");
-  const [planInitialSection, setPlanInitialSection] = useState("visa");
+  const navigate = useNavigate();
 
   const openPlan = (section = "visa") => {
-    setPlanInitialSection(section);
-    setPage("plan");
+    navigate(`/plan/${section}`);
   };
 
   return (
     <>
-      {page === "home" ? (
-        <HomePage onOpenPlan={openPlan} />
-      ) : (
-        <PlanPage
-          onBack={() => setPage("home")}
-          initialSection={planInitialSection}
+      <Routes>
+        <Route path="/" element={<HomePage onOpenPlan={openPlan} />} />
+
+        <Route
+          path="/plan"
+          element={
+            <PlanPage
+              onBack={() => navigate("/")}
+              initialSection="visa"
+            />
+          }
         />
-      )}
+
+        <Route
+          path="/plan/:section"
+          element={
+            <PlanPage
+              onBack={() => navigate("/")}
+            />
+          }
+        />
+      </Routes>
 
       <ChatBot />
 
-      {/* Vercel Analytics */}
       <Analytics />
-
-      {/* Vercel Speed Insights */}
       <SpeedInsights />
     </>
   );
