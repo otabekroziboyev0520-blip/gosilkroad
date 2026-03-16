@@ -902,7 +902,7 @@ export default function HomePage({ onOpenPlan }) {
                   <div
                     style={{
                       fontFamily: "'Crimson Pro',serif",
-                      fontSize: 13,
+                      fontSize: isMobile ? 12 : 13,
                       color: "#3A3020",
                     }}
                   >
@@ -917,8 +917,8 @@ export default function HomePage({ onOpenPlan }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill,minmax(270px,1fr))",
-            gap: 14,
+            gridTemplateColumns: isMobile ? "repeat(2,minmax(0,1fr))" : "repeat(auto-fill,minmax(270px,1fr))",
+            gap: isMobile ? 12 : 14,
             marginTop: 24,
           }}
         >
@@ -946,9 +946,9 @@ export default function HomePage({ onOpenPlan }) {
                 icon={item.icon}
                 name={item.name}
                 rating={item.rating}
-                style={{ height: 130, width: "100%" }}
+                style={{ height: isMobile ? 96 : 130, width: "100%" }}
               />
-              <div style={{ padding: 16 }}>
+              <div style={{ padding: isMobile ? 12 : 16 }}>
                 <div
                   style={{
                     fontFamily: "'Cinzel',serif",
@@ -963,7 +963,7 @@ export default function HomePage({ onOpenPlan }) {
                 <div
                   style={{
                     fontFamily: "'Cinzel',serif",
-                    fontSize: 9,
+                    fontSize: isMobile ? 8 : 9,
                     color: "#4A3E2E",
                     letterSpacing: "0.1em",
                     marginBottom: 7,
@@ -975,17 +975,17 @@ export default function HomePage({ onOpenPlan }) {
                 <p
                   style={{
                     fontFamily: "'Crimson Pro',serif",
-                    fontSize: 13,
+                    fontSize: isMobile ? 12 : 13,
                     color: "#5A4E3A",
-                    lineHeight: 1.55,
+                    lineHeight: 1.5,
                   }}
                 >
                   {item.desc?.slice(0, 75)}...
                 </p>
                 <div
                   style={{
-                    marginTop: 10,
-                    fontSize: 10,
+                    marginTop: 8,
+                    fontSize: isMobile ? 8 : 10,
                     color: selected?.id === item.id ? city.accent : "#2A2418",
                     fontFamily: "'Cinzel',serif",
                     textAlign: "right",
