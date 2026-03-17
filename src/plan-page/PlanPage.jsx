@@ -41,7 +41,7 @@ function PlanPage({ onBack, initialSection = "visa" }) {
   const checkedCount = checkedItems.size;
 
   const sections = [
-    { id: "visa", icon: "🪪", label: "Visa & Entry" },
+    { id: "visa", icon: "🛂", label: "Visa & Entry" },
     { id: "routes", icon: "🚆", label: "Getting Around" },
     { id: "trains", icon: "🎫", label: "Train Tickets" },
     { id: "currency", icon: "💵", label: "Currency & Cash" },
@@ -228,7 +228,7 @@ function PlanPage({ onBack, initialSection = "visa" }) {
                   textAlign: "left",
                 }}
               >
-                <span style={{ fontSize: 15 }}>{s.icon}</span>
+                <span style={{ fontSize: 15, fontFamily: "Segoe UI Emoji, Apple Color Emoji, Noto Color Emoji, EmojiOne Color, sans-serif" }}>{s.icon}</span>
                 <span style={{ lineHeight: 1.25 }}>{s.label}</span>
               </button>
             ))}
@@ -246,7 +246,7 @@ function PlanPage({ onBack, initialSection = "visa" }) {
                   marginBottom: 6,
                 }}
               >
-                🪪 Visa & Entry Requirements
+                🛂 Visa & Entry Requirements
               </h2>
               <p
                 style={{
