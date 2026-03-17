@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import cities from "./cities";
 import { TESTIMONIALS, WHY_UZ } from "./homeData";
 import { GLOBAL_CSS } from "../shared/styles";
@@ -64,7 +63,6 @@ export default function HomePage({ onOpenPlan }) {
     >
       <style>{GLOBAL_CSS}</style>
 
-      {/* NAVBAR */}
       <nav
         style={{
           position: "fixed",
@@ -77,47 +75,83 @@ export default function HomePage({ onOpenPlan }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          gap: isMobile ? 8 : 16,
           background: navScrolled ? "rgba(10,8,5,0.96)" : "transparent",
           backdropFilter: navScrolled ? "blur(20px)" : "none",
           borderBottom: navScrolled
             ? "1px solid #1A1610"
             : "1px solid transparent",
+          transition: "all 0.4s",
         }}
       >
         <div
-          style={{ cursor: "pointer" }}
+          style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", minWidth: 0 }}
           onClick={() => scrollTo("hero")}
         >
-          🌙 GoSilkRoad
-        </div>
-
-        <div style={{ display: "flex", gap: 20 }}>
-          <span onClick={() => scrollTo("map")} className="nl">
-            Explore
-          </span>
-          <span onClick={() => scrollTo("cities")} className="nl">
-            Cities
-          </span>
-
-          {/* REAL URL */}
-          <Link to="/plan/itinerary" className="nl">
-            Plan
-          </Link>
-        </div>
-
-        <Link to="/plan/itinerary">
-          <button
+          <span style={{ fontSize: isMobile ? 18 : 20 }}>🌙</span>
+          <span
             style={{
-              padding: "8px 18px",
-              background: "linear-gradient(135deg,#C9A84C,#8B6914)",
-              border: "none",
-              borderRadius: 20,
-              cursor: "pointer",
+              fontFamily: "'Cinzel',serif",
+              fontSize: isMobile ? 12 : 15,
+              fontWeight: 700,
+              color: "#C9A84C",
+              letterSpacing: "0.08em",
+              whiteSpace: "nowrap",
             }}
           >
-            PLAN TRIP
-          </button>
-        </Link>
+            GoSilkRoad
+          </span>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            gap: isMobile ? 10 : 28,
+            minWidth: 0,
+            flex: 1,
+            justifyContent: "center",
+          }}
+        >
+          {[["Explore", "map"], ["Cities", "cities"], ["Plan", "plan"]].map(
+            ([l, id]) => (
+              <span
+                key={id}
+                className="nl"
+                onClick={() =>
+                  id === "plan" ? onOpenPlan("itinerary") : scrollTo(id)
+                }
+                style={{
+                  fontFamily: "'Cinzel',serif",
+                  fontSize: isMobile ? 9 : 11,
+                  letterSpacing: isMobile ? "0.08em" : "0.15em",
+                  color: "#8A7A60",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {isMobile ? l : l.toUpperCase()}
+              </span>
+            )
+          )}
+        </div>
+
+        <button
+          onClick={() => onOpenPlan("itinerary")}
+          style={{
+            padding: isMobile ? "8px 12px" : "7px 18px",
+            background: "linear-gradient(135deg,#C9A84C,#8B6914)",
+            border: "none",
+            borderRadius: 20,
+            fontFamily: "'Cinzel',serif",
+            fontSize: isMobile ? 9 : 10,
+            letterSpacing: isMobile ? "0.08em" : "0.15em",
+            color: "#0A0805",
+            cursor: "pointer",
+            whiteSpace: "nowrap",
+            flexShrink: 0,
+          }}
+        >
+          PLAN TRIP
+        </button>
       </nav>
 
       <section
