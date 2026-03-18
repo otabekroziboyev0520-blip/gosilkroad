@@ -7,6 +7,7 @@ const PLACE_IMAGES = {
     "/images/places/registan/registan-1.jpg",
     "/images/places/registan/registan-2.jpg",
     "/images/places/registan/registan-3.jpg",
+    "/images/places/registan/registan-4.jpg",
   ],
   "Gur-e-Amir": [
     "/images/places/gur-e-amir/gur-e-amir-1.jpg",
@@ -32,6 +33,10 @@ const PLACE_IMAGES = {
   ],
   Amir_Timur_Museum: [
     "/images/places/amir-temur-monument/amir-temur-monument-1.jpg",
+  ],
+  Emirhan: [
+    "/images/places/eats/emirhan/emirhan-1.jpg",
+    "/images/places/eats/emirhan/emirhan-2.jpg",
   ],
   Ark_of_Bukhara: [
     "/images/places/ark-of-bukhara/ark-of-bukhara-1.jpg",
